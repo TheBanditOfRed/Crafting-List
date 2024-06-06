@@ -1,0 +1,9 @@
+Display Amount:
+  Stack: true
+  Shulker Box: false
+  Double Chest: false
+
+Stack Sizes:
+  Stack: 64
+  Shulker Box: 1728
+  Double Chest: 3456

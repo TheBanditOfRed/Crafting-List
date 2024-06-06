@@ -1,0 +1,11 @@
+key: value
+
+list:
+  - item1
+  - item2
+  - item3
+
+dict:
+  key: value1
+  key2: value2
+  key3: value3
