@@ -36,37 +36,16 @@ with open('testing/test.csv', 'r') as csv_file:
         print("")
         print(item)
         print("Select Process:")
-        recipe_type = resources['resources'][item]['recipes']
+        recipes = resources['resources'][item]['recipes']
         #print(recipe_type)
-        for x in range(len(resources['resources'][item]['recipes'])):
-            recipe_type = resources['resources'][item]['recipes'][x].get("recipe_type")
+        for x in range(len(recipes)):
+            recipe_type = recipes[x].get("recipe_type")
             print(x + 1, ". ", recipe_type)
             
         recipe_selection = input('> ')
         
-        if recipe_selection.isnumeric():
-            recipe_selection = int(recipe_selection)
-        else:
-            while recipe_selection.isnumeric() == False:
-                print("Invalid Entry")
-                recipe_selection = input('> ')
-                if recipe_selection.isnumeric() == True:
-                    recipe_selection = int(recipe_selection)
-                    break
-        
-        while recipe_selection < 1 or recipe_selection > (len(resources['resources'][item]['recipes']) + 1) == True:
-            print("Invalid Entry")
+        while recipe_selection.isnumeric() == False or not 1 <= int(recipe_selection) <= len(recipes):
+            print(f"Invalid Entry: Please enter a number from 1 to {len(recipes)}")
             recipe_selection = input('> ')
-            if recipe_selection.isnumeric():
-                recipe_selection = int(recipe_selection)
-            else:
-                if recipe_selection.isnumeric() == False:
-                    print("Invalid Entry")
-                    recipe_selection = input('> ')
-                    if recipe_selection.isnumeric() == True:
-                        recipe_selection = int(recipe_selection)
-            if recipe_selection > 1 and recipe_selection < (len(resources['resources'][item]['recipes']) + 1):
-                break
-            
-        
-            
+    
+        recipe_selection = int(recipe_selection)
