@@ -1,7 +1,7 @@
-Display Amount:
-  Stack: true
-  Shulker Box: false
-  Double Chest: false
+Display Amount: #1=True 0=False 
+  Stack: 1
+  Shulker Box: 0
+  Double Chest: 0
 
 Stack Sizes:
   Stack: 64
