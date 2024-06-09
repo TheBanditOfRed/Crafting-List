@@ -50,7 +50,6 @@ def process_selection(resources, config):
     #try:
         with open('mats_list/test.csv', 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
-            
             next(csv_reader)
             
             for row in csv_reader:
@@ -74,79 +73,20 @@ def process_selection(resources, config):
                 
                 for x in range(len(recipes)):
                     recipe_type = recipes[x].get("recipe_type")
+
+                    amount_recipe_type = {}
                     
                     amount_pros = 0
-                    rr_amount = 0
-                    s_amount = 0
-                    aw_amount = 0
-                    st_amount = 0
-                    t_amount = 0
-                    c_amount = 0
-                    sh_amount = 0
-                    as_amount = 0
-                    cu_amount = 0
-                    o_amount = 0
-                    sm_amount = 0
-                    cr_amount = 0
                     multiplier = 0
+
                     if recipe_type == "Raw Resource":
                         amount_pros = amount
-                        rr_amount = amount
-                    elif recipe_type == "Smelting":
+                    else:
                         while amount_pros < amount:
                             amount_pros = amount_pros + recipes[x].get("output")
                             multiplier = multiplier + 1
-                        s_amount = amount_pros
-                    elif recipe_type == "Add Water":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        aw_amount = amount_pros
-                    elif recipe_type == "Strip":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        st_amount = amount_pros
-                    elif recipe_type == "Till":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        t_amount = amount_pros
-                    elif recipe_type == "Carve":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        c_amount = amount_pros
-                    elif recipe_type == "Shovel":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        sh_amount = amount_pros
-                    elif recipe_type == "As":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        as_amount = amount_pros
-                    elif recipe_type == "Cutting":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        cu_amount = amount_pros
-                    elif recipe_type == "Oxidation":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        o_amount = amount_pros
-                    elif recipe_type == "Smithing Table":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        sm_amount = amount_pros
-                    elif recipe_type == "Crafting":
-                        while amount_pros < amount:
-                            amount_pros = amount_pros + recipes[x].get("output")
-                            multiplier = multiplier + 1
-                        cr_amount = amount_pros
+
+                    amount_recipe_type[recipe_type] = amount_pros
                     
                     num_stacks_pros = math.trunc(amount_pros / stack_size)
                     num_items_pros = amount_pros - (num_stacks_pros * stack_size)
