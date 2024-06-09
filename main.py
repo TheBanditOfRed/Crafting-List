@@ -48,7 +48,7 @@ def data_format():
 
 def process_selection(resources, config):
     #try:
-        with open('testing/test.csv', 'r') as csv_file:
+        with open('mats_list/test.csv', 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
             
             next(csv_reader)
