@@ -1,14 +1,15 @@
 import csv
 import yaml
+import json
 import math
 import datetime
 
-
-with open("resources.yaml", "r") as resources_yaml:
-    resources = yaml.safe_load(resources_yaml)
-    
+# Load main files
 with open("config.yaml", "r") as config_yaml:
     config = yaml.safe_load(config_yaml)
+
+with open("resources.json", "r") as resources_json:
+    resources = json.load(resources_json)
 
 
 def startup_icon():
@@ -31,7 +32,7 @@ def startup_icon():
     print("")
     print("")
  
-#will be needed at some point in future
+# code wont be used but leaving here so i dont forget values :P
 '''if config["Display Amount"].get("Stack") == 1:
     stack_size = 64
 elif config["Display Amount"].get("Shulker Box") == 1:
@@ -48,6 +49,7 @@ def data_format():
 
 def process_selection(resources, config):
     #try:
+        # Load exported csv material list
         with open('mats_list/test.csv', 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
@@ -56,8 +58,9 @@ def process_selection(resources, config):
                 item = row[0]
                 amount = int(row[1])
                 
-                stack_size = 64
+                stack_size = 64         # Will be defined via config file when I get to it
                 
+                # Better amount readibilty maths
                 num_stacks = math.trunc(amount / stack_size)
                 num_items = amount - (num_stacks * stack_size)
                 
@@ -88,6 +91,7 @@ def process_selection(resources, config):
 
                     amount_recipe_type[recipe_type] = amount_pros
                     
+                    # Better amount readibilty maths
                     num_stacks_pros = math.trunc(amount_pros / stack_size)
                     num_items_pros = amount_pros - (num_stacks_pros * stack_size)
                     
@@ -98,6 +102,7 @@ def process_selection(resources, config):
                     
                 recipe_selection = input('> ')
                 
+                # Invalid entry handeling
                 while recipe_selection.isnumeric() == False or not 1 <= int(recipe_selection) <= len(recipes):
                     print(f"Invalid Entry: Please enter a number from 1 to {len(recipes)}")
                     recipe_selection = input('> ')
@@ -112,6 +117,7 @@ def menu(resources, config):
     print("|    [1] Start Calculation    |    [2] Edit Config    |    [3] Load Crafting List    |")
     menu_sel = input("> ")
     
+    # Invalid entry handeling
     while menu_sel.isnumeric() == False or not 1 <= int(menu_sel) <= 3:
         print("Invalid Command")
         menu_sel = input('> ')
