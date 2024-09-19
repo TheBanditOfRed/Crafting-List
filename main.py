@@ -1,12 +1,13 @@
 import csv
-import yaml
+import easygui
 import json
 import math
 import datetime
 
 # Load main files
-with open("config.yaml", "r") as config_yaml:
-    config = yaml.safe_load(config_yaml)
+#with open("config.json", "r") as config_json:
+#    config = json.load(config_json)
+config = 'temp data until figure out why file loading is bugged (prob bcs its an empty file)'
 
 with open("resources.json", "r") as resources_json:
     resources = json.load(resources_json)
@@ -47,10 +48,11 @@ def data_format():
         'multiplier': '',
     }
 
-def process_selection(resources, config):
+
+def process_selection(resources, config, csv_path):
     #try:
         # Load exported csv material list
-        with open('mats_list/test.csv', 'r') as csv_file:
+        with open(csv_path, 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             
@@ -108,7 +110,15 @@ def process_selection(resources, config):
                     recipe_selection = input('> ')
             
                 recipe_selection = int(recipe_selection) - 1
-                
+            
+            print("Save process selection? (Y/N)")
+            file_save_selection = input('> ')
+
+            accepted_responses = [
+                'yes', 'Yes', 'y', 'Y'
+            ]
+
+            #if file_save_selection in accepted_responses:
                 
     #except:
     #    print("No material list found")
@@ -125,7 +135,17 @@ def menu(resources, config):
     menu_sel = int(menu_sel)
                     
     if menu_sel == 1:
-        process_selection(resources, config)
+        print('Attempting to open explorer')
+        try:
+            path = easygui.fileopenbox(
+                #title='Select Material List',
+                #default='~\AppData\Roaming\.minecraft\config\litematica\*.csv',
+                #filetypes='*.csv'
+            )
+        except:
+            print('Failed to open explorer')
+        process_selection(resources, config, path)
+        #new_process_selection_json = open('new_process_selection_.json', 'x')
     elif menu_sel == 2:
         print("DO CONFIG FILE CONFIG WHEN YOU LEARN HOW TO EDIT YAML FILES")
     elif menu_sel == 3:
