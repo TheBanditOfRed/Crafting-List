@@ -1,12 +1,16 @@
+# no mater how dumb you think people are, they will still find a way to surprise you
+
 import csv
 import tkinter as tk
 from tkinter import filedialog
 import json
 import math
 import os
-import datetime
 
 root = tk.Tk()
+#check and create required folders if missing
+os.makedirs('saved-process/', exist_ok=True)
+os.makedirs('material-lists/', exist_ok=True)
 
 # Load main files
 #with open("config.json", "r") as config_json:
@@ -181,7 +185,7 @@ def process_selection(resources, config, path, save_file_path):
                     file_save_selection = input('> ')
                     file_save_selection = file_save_selection.lower().strip('es')
                 if file_save_selection == 'y':
-                    os.remove('saved-process/new_process_selection.json')
+                    os.remove(save_file_path)
                 elif file_save_selection == 'n':
                     print(r"File saved to ~\saved-process")
             
@@ -289,16 +293,36 @@ def menu(resources, config):
                     os.remove(save_file_path)
                     os.rename('saved-process/new_process_selection.json', save_file_path)
                 elif existing_list_input == 'n':
+                    file_rename_input = input("Rename file to:  ")
+                    invalid_characters = r'*?:"<>\/|'
+                    while any(c in invalid_characters for c in file_rename_input) == True:
+                        print('New name can not contain the following charachters:   ', invalid_characters)
+                        file_rename_input = input('Please enter valid file name:   ')
+                    while file_rename_input == material_list_name:
+                        print('New name can not be the same as the orignal file')
+                        file_rename_input = input('Please enter valid file name:   ')
+                        while any(c in invalid_characters for c in file_rename_input) == True:
+                            print('New name can not contain the following charachters:   ', invalid_characters)
+                            file_rename_input = input('Please enter valid file name:   ')
+                    if "." in file_rename_input:            #user input file extension handling
+                        material_list_name, _ = os.path.splitext(file_rename_input)
+                    else:
+                        material_list_name = file_rename_input
+                    save_file_name = material_list_name + '.json'
+                    save_file_path = 'saved-process/' + save_file_name
+                    print(save_file_name)
+                    print(save_file_path)
                     try:
-                        existing_copy_number = '1'    #default first copy number
-                        save_file_path = 'saved-process/' + material_list_name + '-' + existing_copy_number + '.json'
                         os.rename('saved-process/new_process_selection.json', save_file_path)
                     except:
-                        existing_copy_number = ''.join(i for i in save_file_name if i.isdigit())
-                        existing_copy_number = str(int(existing_copy_number) + 1)
-                        save_file_path = 'saved-process/' + material_list_name + '-' + existing_copy_number + '.json'
-                        os.rename('saved-process/new_process_selection.json', save_file_path)
+                        print("An error ocured:   FILE WITH SAME NAME ALREADY EXISTS")
+                        print("Returning to menu")
+                        root.mainloop(
+                            startup_icon(),
+                            menu(resources, config)
+                            )
 
+                        
         process_selection(resources, config, path, save_file_path)
     elif menu_sel == 2:
         print("DO CONFIG FILE")
