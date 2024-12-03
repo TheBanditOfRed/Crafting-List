@@ -13,9 +13,9 @@ os.makedirs('saved-process/', exist_ok=True)
 os.makedirs('material-lists/', exist_ok=True)
 
 # Load main files
-#with open("config.json", "r") as config_json:
-#    config = json.load(config_json)
-config = 'temp data until figure out why file loading is bugged (prob bcs its an empty file)'
+with open("config.json", "r") as config_json:
+    config = json.load(config_json)
+
 
 with open("resources.json", "r") as resources_json:
     resources = json.load(resources_json)
@@ -40,14 +40,6 @@ def startup_icon():
     print("")
     print("")
     print("")
- 
-# code wont be used but leaving here so i dont forget values :P
-'''if config["Display Amount"].get("Stack") == 1:
-    stack_size = 64
-elif config["Display Amount"].get("Shulker Box") == 1:
-    stack_size = 1728
-elif config["Display Amount"].get("Double Chest") == 1:
-    stack_size = 3456'''
 
 def data_format():
     data = {
@@ -62,6 +54,18 @@ def add_new_item():
         startup_icon(),
         menu(resources, config)
         )
+
+def config(config):
+    print("WIP")
+    root.mainloop(
+        startup_icon(),
+        menu(resources, config)
+    )
+
+def crafting_calculator(resources, config, path, save_file_path):
+    with open("config.json", "r") as config_json:
+        config = json.load(config_json)
+    return
 
 def process_selection(resources, config, path, save_file_path):
     try:
@@ -84,7 +88,7 @@ def process_selection(resources, config, path, save_file_path):
                     print(item, ": ", num_stacks, "Stack +", num_items)
                 else:
                     print(item, ": ", num_stacks, "Stacks +", num_items)
-                    
+                        
                     
                 print("Select Process:")
                 try:
@@ -156,10 +160,11 @@ def process_selection(resources, config, path, save_file_path):
 
                 add_processes.append({
                     "Item": item,
-                    "Process": recipe_selection,
+                    "Amount": amount_pros,
+                    "Process": recipe_selection
                 })
 
-                print(add_processes)
+                #print(add_processes)
 
                 with open(save_file_path, 'w') as json_file:
                     json.dump(add_processes, json_file,
@@ -337,4 +342,4 @@ root.attributes("-topmost", True)
 root.mainloop(
     startup_icon(),
     menu(resources, config)
-    )
+    )   

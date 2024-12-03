@@ -1,0 +1,39 @@
+[
+    {
+        "Defaults": {
+            "Any Acacia Log": 1,
+            "Any Birch Log": 1,
+            "Any Coal": 1,
+            "Any Crimson Stem": 1,
+            "Any Dark Oak Log": 1,
+            "Any Jungle Log": 1,
+            "Any Log": 1,
+            "Any Log That Burns": 1,
+            "Any Mangrove Log": 1,
+            "Any Oak Log": 1,
+            "Any Planks": 1,
+            "Any Purpur Block": 1,
+            "Any Red Sandstone": 1,
+            "Any Sand": 1,
+            "Any Shulker Box": 1,
+            "Any Slab": 1,
+            "Any Soul Fire Base Block": 1,
+            "Any Spruce Log": 1,
+            "Any Stone": 1,
+            "Any Stone Tool Material": 1,
+            "Any Uncut Red Sandstone": 1,
+            "Any Uncut Yellow Sandstone": 1,
+            "Any Unsmooth Quartz Block": 1,
+            "Any Warped Stem": 1,
+            "Any Wool": 1,
+            "Any Yellow Sandstone": 1,
+            "Container Type": 1
+        },
+        "Container Unit Values": {
+            "Stack": 64,
+            "Shulker": 1728,
+            "Double Chest": 3456,
+            "Single": 1
+        }
+    }
+]

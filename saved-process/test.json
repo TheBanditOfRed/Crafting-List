@@ -1,0 +1,21 @@
+[
+    {
+        "Material List": "test",
+        "Path": "C:/Users/Oscar/AppData/Roaming/.minecraft/config/litematica/test.csv"
+    },
+    {
+        "Item": "Polished Granite",
+        "Amount": 70,
+        "Process": 0
+    },
+    {
+        "Item": "Granite",
+        "Amount": 345,
+        "Process": 1
+    },
+    {
+        "Item": "Stone",
+        "Amount": 900,
+        "Process": 1
+    }
+]
