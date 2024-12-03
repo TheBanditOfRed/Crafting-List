@@ -53,7 +53,7 @@ def add_new_item():
     root.mainloop(
         startup_icon(),
         menu(resources, config)
-        )
+    )
 
 def config(config):
     print("WIP")
