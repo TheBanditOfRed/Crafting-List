@@ -55,12 +55,39 @@ def add_new_item():
         menu(resources, config)
     )
 
-def config(config):
-    print("WIP")
-    root.mainloop(
-        startup_icon(),
-        menu(resources, config)
-    )
+def settings(config, resources):
+    #WIP
+
+    defaults = config['Defaults']
+    default_item_num = 0
+    default_selection_options = []
+
+    # Creating option screen
+    for key, value in defaults.items():
+        default_selection_options.append(key)
+        buffer = max(len(key) for key, value in defaults.items()) + 10
+        default_item_num = default_item_num + 1
+        if default_item_num % 2 != 0:
+            spaced_key = key + " [" + str(default_item_num) + "]"
+            print(spaced_key.ljust(buffer), end="")
+        elif default_item_num % 2 == 0:
+            print(key + " [" + str(default_item_num) + "]")
+    if default_item_num % 2 != 0:
+        print("")
+    print("")
+
+    # Option Selection
+    config_selection = input('> ')
+                
+    # Invalid entry handeling
+    while config_selection.isnumeric() == False or not 1 <= int(config_selection) <= len(defaults) + 1:
+        print(f"Invalid Entry: Please enter a number from 1 to {len(defaults) + 1}")
+        config_selection = input('> ')
+    print(config_selection)
+
+    config_selection = int(config_selection) - 1
+    print("Current", default_selection_options[config_selection].lower(), ": ", resources["requirement_groups"][default_selection_options[config_selection].replace("Default", "Any")][defaults[default_selection_options[config_selection]]])
+
 
 def crafting_calculator(resources, config, path, save_file_path):
     with open("config.json", "r") as config_json:
@@ -330,7 +357,7 @@ def menu(resources, config):
                         
         process_selection(resources, config, path, save_file_path)
     elif menu_sel == 2:
-        print("DO CONFIG FILE")
+        settings(config, resources)
         print("DO ADD ITEM")
     elif menu_sel == 3:
         print("DO FILE LOADING")

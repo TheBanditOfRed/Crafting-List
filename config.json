@@ -1,33 +1,32 @@
-[
-    {
+{
         "Defaults": {
-            "Any Acacia Log": 1,
-            "Any Birch Log": 1,
-            "Any Coal": 1,
-            "Any Crimson Stem": 1,
-            "Any Dark Oak Log": 1,
-            "Any Jungle Log": 1,
-            "Any Log": 1,
-            "Any Log That Burns": 1,
-            "Any Mangrove Log": 1,
-            "Any Oak Log": 1,
-            "Any Planks": 1,
-            "Any Purpur Block": 1,
-            "Any Red Sandstone": 1,
-            "Any Sand": 1,
-            "Any Shulker Box": 1,
-            "Any Slab": 1,
-            "Any Soul Fire Base Block": 1,
-            "Any Spruce Log": 1,
-            "Any Stone": 1,
-            "Any Stone Tool Material": 1,
-            "Any Uncut Red Sandstone": 1,
-            "Any Uncut Yellow Sandstone": 1,
-            "Any Unsmooth Quartz Block": 1,
-            "Any Warped Stem": 1,
-            "Any Wool": 1,
-            "Any Yellow Sandstone": 1,
-            "Container Type": 1
+            "Default Acacia Log": 1,
+            "Default Birch Log": 1,
+            "Default Coal": 1,
+            "Default Crimson Stem": 1,
+            "Default Dark Oak Log": 1,
+            "Default Jungle Log": 1,
+            "Default Log": 1,
+            "Default Log That Burns": 1,
+            "Default Mangrove Log": 1,
+            "Default Oak Log": 1,
+            "Default Planks": 1,
+            "Default Purpur Block": 1,
+            "Default Red Sandstone": 1,
+            "Default Sand": 1,
+            "Default Shulker Box": 1,
+            "Default Slab": 1,
+            "Default Soul Fire Base Block": 1,
+            "Default Spruce Log": 1,
+            "Default Stone": 1,
+            "Default Stone Tool Material": 1,
+            "Default Uncut Red Sandstone": 1,
+            "Default Uncut Yellow Sandstone": 1,
+            "Default Unsmooth Quartz Block": 1,
+            "Default Warped Stem": 1,
+            "Default Wool": 1,
+            "Default Yellow Sandstone": 1,
+            "Default Container Type": 1
         },
         "Container Unit Values": {
             "Stack": 64,
@@ -36,4 +35,3 @@
             "Single": 1
         }
     }
-]
